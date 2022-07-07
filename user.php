@@ -9,32 +9,9 @@
 
 ?>
 
+<!-- new ส่วน -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <?php 
 
-            if (isset($_SESSION['user_login'])) {
-                $user_id = $_SESSION['user_login'];
-                $stmt = $conn->query("SELECT * FROM users WHERE id = $user_id");
-                $stmt->execute();
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            }
-        ?>
-        <h3 class="mt-4">Welcome, <?php echo $row['firstname'] . ' ' . $row['lastname'] ?></h3>
-        <a href="logout.php" class="btn btn-danger">Logout</a>
-    </div>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,25 +19,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-  <title>Menu | Shaif's Cuisine</title>
+  <link rel="shortcut icon" href="./images/anya.png" type="image/x-icon">
+  <title>home | user</title>
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./globalStyles.css">
   <link rel="stylesheet" href="./components.css">
   <!-- aos library css  -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <!-- Add your custom css -->
-  <link rel="stylesheet" href="./menu.css">
+  <link rel="stylesheet" href="./home.css">
 </head>
 
 <body>
-
   <!-- Nav Section -->
   <div class="nav">
     <div class="container">
       <div class="nav__wrapper">
-        <a href="./index.html" class="logo">
-          <img src="./images/logo.svg" alt="shaif's cuisine">
+        <a href="./user.php" class="logo">
+          <img src="./images/logo4.png" alt="chowons">
         </a>
         <nav>
           <div class="nav__icon">
@@ -73,7 +49,7 @@
             </svg>
           </div>
           <div class="nav__bgOverlay"></div>
-          <ol class="nav__list">
+          <ul class="nav__list">
             <div class="nav__close">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -84,367 +60,505 @@
             </div>
             <div class="nav__list__wrapper">
 
-              <li><a class="nav__link" href="./index.html">Home</a></li>
-              <li><a class="nav__link" href="./menu.html">ภาคเหนือ</a></li>
-              <li><a class="nav__link" href="./menu1.html">ภาคอีสาน</a></li>
-              <li><a class="nav__link" href="./menu2.html">ภาคกลาง</a></li>
-              <li><a class="nav__link" href="./menu3.html">ภาคใต้</a></li>
-              <li><a class="nav__link" href="./about.html">เกี่ยวกับ</a></li>
-              <li><a class="nav__link" href="./contact.html">Contact</a></li>
-              <li><a href="./booking.html" class="btn primary-btn">Login</a></li>
+            <li><a class="nav__link" href="./user.php">Home</a></li>
+              <li><a class="nav__link" href="./north1.php">ภาคเหนือ</a></li>
+              <li><a class="nav__link" href="./northeast1.php">ภาคอีสาน</a></li>
+              <li><a class="nav__link" href="./middle1.php">ภาคกลาง</a></li>
+              <li><a class="nav__link" href="./south1.php">ภาคใต้</a></li>
+              <li><a class="nav__link" href="./about1.php">เกี่ยวกับ</a></li>
+              <li><a class="nav__link" href="./contact1.php">Contact</a></li>
+                <li><div class="btn primary-btn">
+                        <?php 
+
+                            if (isset($_SESSION['user_login'])) {
+                                $user_id = $_SESSION['user_login'];
+                                $stmt = $conn->query("SELECT * FROM users WHERE id = $user_id");
+                                $stmt->execute();
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                            }
+                        ?>
+                        
+                        <a class="btn primary-btn" href="./home.php">Logout</a>
+                        
+                    </div>
+                    
+                </li>
             </div>
-          </ol>
+          </ul>
         </nav>
       </div>
     </div>
   </div>
   <!-- End Nav Section -->
-  <!-- page Title -->
-  <section id="page__title" data-aos="fade-up">
+  <!-- Hero Section -->
+  <section id="hero">
     <div class="container">
-      <h2 class="page__title__text">
-        Explore Our Menu
-      </h2>
-    </div>
-  </section>
-  <!-- Our Specials -->
-  <section id="ourSpecials" data-aos="fade-up">
-    <div class="container">
-      <h3 class="ourSpecials__title">Our Specials</h3>
-      <div class="ourSpecials__wrapper">
-        <div class="ourSpecials__item">
-          <div class="ourSpecials__item__img">
-            <img src="./images/anya.png" alt="food img">
-          </div>
-          <div class="ourSpecials__item__info">
-            <h3 class="ourSpecials__item__title">
-              แกงเขียวหวาน
-            </h3>
-            <h4 class="ourSpecials__item__price">รสชาติ</h4>
-            <h4 class="ourSpecials__item__price">วิธีการทำ</h4>
-            <h4 class="ourSpecials__item__price">อุปกรณ์</h4>
-            <div class="ourSpecials__food__item">1.กะทิ<br>
-                2.กะปิ
-            </div>
-            <div class="ourSpecials__item__stars">
-              <img src="./images/3star.png" alt="3 stars">
+      <div class="hero__wrapper">
+        <div class="hero__left" data-aos="fade-left">
+          <div class="hero__left__wrapper">
+
+            <h1 class="hero__heading">อาหารไทย 4 ภาค</h1>
+            <p class="hero__info">
+              อาหารไทยมีมากมายหลากหลายเมนู ทั้งเป็นที่รู้จักโดยทั่วไปและอาจจะไม่เคยได้ยินชื่อเสียงเรียงนามของเมนูนั้นๆ มาก่อนเลยก็ได้ 
+              ยิ่งหากเป็นอาหารไทยทั้ง 4 ภาคแล้ว เหนือ กลาง อีสาน และ ใต้ 
+              ความอร่อยของแต่ละท้องถิ่นย่อมแตกต่างกันไปตามวัฒนธรรมและประเพณีแต่เก่าก่อน
+            </p>
+            <div class="button__wrapper">
+              <a href="./menu.html" class="btn primary-btn">เกี่ยวกับ</a>
+              <a href="./booking.html" class="btn">Contact</a>
             </div>
           </div>
         </div>
-        <div class="ourSpecials__item">
-          <div class="ourSpecials__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="ourSpecials__item__info">
-            <h3 class="ourSpecials__item__title">
-              Vegan Salad bowl
-            </h3>
-            <h4 class="ourSpecials__item__price">$12</h4>
-            <div class="ourSpecials__item__stars">
-              <img src="./images/3star.png" alt="3 stars">
-            </div>
+        <div class="hero__right" data-aos="fade-right">
+          <div class="hero__imgWrapper">
+            <img src="./images/heroImg.png">
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Our Specials -->
+  <!-- End Hero Section -->
+  <!-- Store Info Section -->
+  <section id="storeInfo" data-aos="fade-up">
+    <div class="container">
+      <div class="storeInfo__wrapper">
+        <div class="storeInfo__item">
+          <div class="storeInfo__icon">
+            <img src="./images/anya.png" alt="clock icon">
+          </div>
+          <h3 class="storeInfo__title">
+            Chanon
+          </h3>
+          <p class="storeInfo__text">
+            Name
+          </p>
+        </div>
+        <div class="storeInfo__item">
+          <div class="storeInfo__icon">
+            <img src="./images/address-icon.svg" alt="clock icon">
+          </div>
+          <h3 class="storeInfo__title">
+            SB-TECH
+          </h3>
+          <p class="storeInfo__text">
+            Address
+          </p>
+        </div>
+        <div class="storeInfo__item">
+          <div class="storeInfo__icon">
+            <img src="./images/phone-icon.svg" alt="clock icon">
+          </div>
+          <h3 class="storeInfo__title">
+            +66968054317
+          </h3>
+          <p class="storeInfo__text">
+            Call Now
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Store Info Section -->
+  <!-- Our Specials Section -->
+  <section id="ourSpecials" data-aos="fade-up">
+    <div class="container">
+      <div class="ourSpecials__wrapper">
+        <div class="ourSpecials__left">
+          <div class="ourSpecials__item">
+            <div class="ourSpecials__item__img">
+              <img src="./images/tomyumkung.jpg" alt="food img">
+            </div>
+            <h2 class="ourSpecials__item__title">
+              ต้มยำกุ้ง
+            </h2>
+            <h3 class="ourSpecials__item__price">
+              Tom Yum Kung
+            </h3>
+            <div class="ourSpecials__item__stars">
+              <img src="./images/3star.png" alt="3 stars">
+            </div>
+            <p class="ourSpecials__item__text">
+            ต้มยำกุ้งน้ำข้น เป็นอาหารที่ขึ้นชื่อของบ้านเรา และโด่งดังไปไกลในระดับโลก ถึงขนาดที่ว่าถ้าใครมาเมืองไทย แล้วไม่ได้กินต้มยำกุ้งน้ำข้น ก็เหมือนมาไม่ถึง แต่สงสัยมั้ยว่า บางร้านก็มีเมนูต้มยำกุ้ง แต่ทำไมพอมาถึงโต๊ะแล้วดันเป็นน้ำใส แล้วต้มยำกุ้งจริง ๆ แล้วมันต้องน้ำข้นหรือน้ำใสกันแน่นะ
+            </p>
+          </div>
+          <div class="ourSpecials__item">
+            <div class="ourSpecials__item__img">
+              <img src="./images/papayasalad.webp" alt="food img">
+            </div>
+            <h2 class="ourSpecials__item__title">
+              ส้มตำ
+            </h2>
+            <h3 class="ourSpecials__item__price">
+              Papaya Salad
+            </h3>
+            <div class="ourSpecials__item__stars">
+              <img src="./images/3star.png" alt="3 stars">
+            </div>
+            <p class="ourSpecials__item__text">
+            ส้มตำ เป็นอาหารปรุงมาจากการทำตำส้ม คือการทำให้เปรี้ยว ในลาวจะเรียกว่าตำหมากหุ่ง ปรุงโดยนำมะละกอดิบที่สับแล้วฝานหรือขูดเป็นเส้นมาตำในครกเป็นหลัก พร้อมด้วยวัตถุดิบอื่น ๆ คือ มะเขือเทศลูกเล็ก มะเขือสีดา มะเขือเปราะ พริกสดหรือพริกแห้ง ถั่วฝักยาว กระเทียม และปรุงรสด้วยน้ำตาลปี๊บ น้ำปลา และมะนาว
+            </p>
+          </div>
+        </div>
+        <div class="ourSpecials__right">
+          <h2 class="ourSpecials__title">
+            อาหารที่แนะนำ
+          </h2>
+          <p class="ourSpecials__text">
+            ต้มยำกุ้ง และ ส้มตำ เป็นอาหารที่นิยมรับประทานกันมากในประเทศไทย เป็นอาหารที่หากินได้ง่าย
+          </p>
+          <a href="./signin.php" class="btn primary-btn">Login</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Our Specials Section -->
   <!-- Top Dishes -->
-  <section id="dishGrid" data-aos="fade-down">
+  <section id="dishGrid" data-aos="fade-up">
     <div class="container">
       <h2 class="dishGrid__title">
-        Top Dishes
+        เมนูแนะนำ
       </h2>
       <div class="dishGrid__wrapper">
         <div class="dishGrid__item">
           <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
+            <img src="./images/krapaohmusubkaidao.jpg" alt="food img">
           </div>
           <div class="dishGrid__item__info">
             <h3 class="dishGrid__item__title">
-              Hot Green Bowl
+              กะเพราหมูสับไข่ดาว
             </h3>
             <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
+            <!-- <div class="dishGrid__item__stars">
               <img src="./images/3star.png" alt="3 star">
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="dishGrid__item">
           <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
+            <img src="./images/แพนงไก่1.jpg" alt="food img">
           </div>
           <div class="dishGrid__item__info">
             <h3 class="dishGrid__item__title">
-              Hot Green Bowl
+              แพนงไก่
             </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
+            <h3 class="dishGrid__item__price">Panang Chicken</h3>
+            <!-- <div class="dishGrid__item__stars">
               <img src="./images/3star.png" alt="3 star">
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="dishGrid__item">
           <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
+            <img src="./images/food-7.png" alt="food img">
           </div>
           <div class="dishGrid__item__info">
             <h3 class="dishGrid__item__title">
               Hot Green Bowl
             </h3>
             <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
+            <!-- <div class="dishGrid__item__stars">
               <img src="./images/3star.png" alt="3 star">
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
   </section>
   <!-- End Top Dishes -->
-  <!-- Breakfast Dishes -->
-  <section id="dishGrid" data-aos="fade-up">
+  <!-- Discount Section -->
+  <section id="discount" data-aos="fade-up">
     <div class="container">
-      <h2 class="dishGrid__title">
-        Breakfast
-      </h2>
-      <div class="dishGrid__wrapper">
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
+      <div class="discount__wrapper">
+        <div class="discount__images">
+          <div class="discount__img1">
+            <img src="./images/food-5.png" alt="Food img">
           </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+          <div class="discount__img2">
+            <img src="./images/food-4.png" alt="Food img">
+          </div>
+          <div class="discount__img3">
+            <img src="./images/food-3.png" alt="Food img">
+          </div>
+        </div>
+        <div class="discount__info">
+          <h3 class="discount__text">20% OFF</h3>
+          <h3 class="discount__title">Demo Dish For Discount</h3>
+          <h3 class="discount__price">
+            <span class="discount__oldPrice">$45</span>
+            <span class="discount__newPrice">$35</span>
+          </h3>
+          <div class="discount__stars">
+            <img src="./images/3star.png" alt="3 stars">
+          </div>
+          <a class="btn primary-btn" href="./booking.html">Book Table</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Discount Section -->
+  <!-- Events Media -->
+  <section id="eventsMedia" data-aos="fade-up">
+    <div class="container">
+      <div class="eventsMedia__wrapper">
+        <div class="eventsMedia__1">
+          <img src="./images/eventsMedia1.png" alt="events">
+          <a href="#" class="eventsMedia__1__playButton">
+            <img src="./images/playIcon.svg" alt="play button">
+          </a>
+        </div>
+        <div class="eventMedia__2">
+          <img src="./images/eventsMedia2.png" alt="events">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Events Media -->
+  <!-- Events Info -->
+  <section id="eventsInfo" data-aos="fade-up">
+    <div class="container">
+      <div class="eventsInfo__wrapper">
+        <div class="eventsInfo__left">
+          <div class="eventsInfo__item">
+            <div class="eventsInfo__item__img">
+              <img src="./images/event-corporate.png" alt="corporate events">
+            </div>
+            <div class="eventsInfo__item__info">
+              <h2 class="eventsInfo__item__title">Corporate Events</h2>
+              <p class="eventsInfo__item__text">
+                Shaif's Cuisine is the perfect venue for your corporate events. We specialize in private parties.
+              </p>
+            </div>
+          </div>
+          <div class="eventsInfo__item">
+            <div class="eventsInfo__item__img">
+              <img src="./images/event-weedings.png" alt="wedding events">
+            </div>
+            <div class="eventsInfo__item__info">
+              <h2 class="eventsInfo__item__title">Weddings</h2>
+              <p class="eventsInfo__item__text">
+                Shaif's Cuisine offers an intimately unique wedding experience set in a spectacular setting that is
+                sophisticated and comfortable.
+              </p>
             </div>
           </div>
         </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
+        <div class="eventsInfo__right">
+          <h2 class="eventsInfo__title">Book For Events</h2>
+          <p class="eventsInfo__text">Book your private event or corporate function at Shaif's cuisine to experience a
+            truly unique experience.</p>
+          <a href="./contact.html" class="btn primary-btn">Contact Now</a>
         </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Events Info -->
+  <!-- Why Us section -->
+  <section id="whyUs">
+    <div class="container">
+      <div class="whyUs__wrapper">
+        <div class="whyUs__left" data-aos="fade-right">
+          <h2 class="whyUs__title">
+            Why Choose Our Food
+          </h2>
+          <p class="whyUs__text">
+            Quality of Service, Food, Ambiance, and Value of Money are the primary elements for choosing a restaurant.
+            Shaif's Cuisine is one of the most exquisite fine-dinning restaurant in Chittagong cities with a captivating
+            view of GEC Hills, perfect ambiance, and scrumptious food.
+          </p>
         </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+        <div class="whyUs__right" data-aos="fade-left">
+          <div class="whyUs__items__wrapper">
+            <div class="whyUs__item">
+              <div class="whyUs__item__icon">
+                <img src="./images/whyUs-icon1.svg" alt="quality Food">
+              </div>
+              <p class="whyUs__item__text">Quality Food</p>
             </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+            <div class="whyUs__item">
+              <div class="whyUs__item__icon">
+                <img src="./images/whyUs-icon2.svg" alt="Classical taste">
+              </div>
+              <p class="whyUs__item__text">Classical taste</p>
+            </div>
+            <div class="whyUs__item">
+              <div class="whyUs__item__icon">
+                <img src="./images/whyUs-icon3.svg" alt="Skilled chef">
+              </div>
+              <p class="whyUs__item__text">Skilled chef</p>
+            </div>
+            <div class="whyUs__item">
+              <div class="whyUs__item__icon">
+                <img src="./images/whyUs-icon4.svg" alt="Best service">
+              </div>
+              <p class="whyUs__item__text">Best service</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Breakfast Dishes -->
-  <!-- Lunch Dishes -->
-  <section id="dishGrid" data-aos="fade-up">
+  <!-- End Why Us section -->
+  <!-- Testimonial Section -->
+  <section id="testimonial">
     <div class="container">
-      <h2 class="dishGrid__title">
-        Lunch
-      </h2>
-      <div class="dishGrid__wrapper">
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+      <div class="testimonial__wrapper" data-aos="fade-up">
+        <h2 class="testimonial__title">What Our Customers Say</h2>
+        <div class="testimonial__items__wrapper">
+          <div class="testimonial__item">
+            <div class="testimonial__item__img">
+              <img src="./images/testimonial_img1.png" alt="Sayed Ahmed">
+            </div>
+            <div class="testimonial__item__info">
+              <h3 class="testimonial__item__name">Sayed Ahmed</h3>
+              <div class="testimonial__item__stars">
+                <img src="./images/3star.png" alt="3 star">
+              </div>
+              <p class="testimonial__item__text">
+                “Visited Shaif’s Cuisine with friends last Sunday. Really lovely meal and very warm welcome – we would
+                recommend this lovely restaurant and will try to go back again”
+              </p>
             </div>
           </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+          <div class="testimonial__item">
+            <div class="testimonial__item__img">
+              <img src="./images/testimonial_img1.png" alt="Sayed Ahmed">
+            </div>
+            <div class="testimonial__item__info">
+              <h3 class="testimonial__item__name">Arfan</h3>
+              <div class="testimonial__item__stars">
+                <img src="./images/3star.png" alt="3 star">
+              </div>
+              <p class="testimonial__item__text">
+                "from start to finish, lovely experience. Hostess very pleasant, wait staff john was wonderful and
+                attentive, food plentiful and delicious, desserts out of this world"
+              </p>
             </div>
           </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+          <div class="testimonial__item">
+            <div class="testimonial__item__img">
+              <img src="./images/testimonial_img1.png" alt="Sayed Ahmed">
+            </div>
+            <div class="testimonial__item__info">
+              <h3 class="testimonial__item__name">Fahim & Nishat</h3>
+              <div class="testimonial__item__stars">
+                <img src="./images/3star.png" alt="3 star">
+              </div>
+              <p class="testimonial__item__text">
+                “A warm and friendly welcome with fantastic customer service. Always great, tasty food served piping
+                hot- just the way we love it . Would definitely recommend. We have been repeatedly and it's consistently
+                exceeded our expectations"
+              </p>
             </div>
           </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+          <div class="testimonial__item">
+            <div class="testimonial__item__img">
+              <img src="./images/testimonial_img1.png" alt="Sayed Ahmed">
             </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
+            <div class="testimonial__item__info">
+              <h3 class="testimonial__item__name">Hussain</h3>
+              <div class="testimonial__item__stars">
+                <img src="./images/3star.png" alt="3 star">
+              </div>
+              <p class="testimonial__item__text">
+                “I would just like to say thank you for the excellent service we received in your restaurant last night.
+                Although the place was very busy we still had an excellent time and really appreciated the live
+                entertainment too!“
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Lunch Dishes -->
-  <!-- Dinner Dishes -->
-  <section id="dishGrid" data-aos="fade-up">
+  <!-- End Testimonial Section -->
+  <!-- Newsletter Section -->
+  <section id="newsletter" data-aos="fade-up">
     <div class="container">
-      <h2 class="dishGrid__title">
-        Dinner
-      </h2>
-      <div class="dishGrid__wrapper">
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
+      <div class="newsletter__wrapper">
+        <div class="newsletter__info">
+          <h3 class="newsletter__title">Join Newsletter</h3>
+          <p class="newsletter__text">
+            Get notified with the latest news and recent offers from the “Shaif’s Cuisine”
+          </p>
         </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
-        </div>
-        <div class="dishGrid__item">
-          <div class="dishGrid__item__img">
-            <img src="./images/food-1.png" alt="food img">
-          </div>
-          <div class="dishGrid__item__info">
-            <h3 class="dishGrid__item__title">
-              Hot Green Bowl
-            </h3>
-            <h3 class="dishGrid__item__price">$12</h3>
-            <div class="dishGrid__item__stars">
-              <img src="./images/3star.png" alt="3 star">
-            </div>
-          </div>
+        <div class="newsletter__form">
+          <form action="">
+            <label for="email">
+              <input type="email" placeholder="Your Email Address">
+            </label>
+            <button type="submit">Join</button>
+          </form>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Dinner Dishes -->
+  <!-- End Newsletter Section -->
+
+  <!-- comment -->
+<?php 
+
+  include_once 'controllers/Comment.php';
+  $com = new Comment();
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Comment System OOP</title>
+  <style>
+      .box {
+          border: 6px solid #999; 
+          margin: 30px auto 0; 
+          padding: 20px; 
+          width: 1000px; 
+          height: 250px;
+          overflow: scroll;
+      }
+      .box ul {
+          margin: 0; padding: 0; list-style: none;
+      }
+      .box li {
+          display: block; 
+          border-bottom: 1px dashed #ddd;
+          margin-bottom: 5px;
+          padding-bottom: 5px;
+      }
+      .box li:last-child {
+          border-bottom: 0 dashed #ddd;
+      }
+      .box span {
+          color: #888;
+      }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+      <ul>
+          <?php 
+              if($result = $com->indexc()) {
+              while ($data = $result->fetch_assoc()) {
+          ?>
+              <li>
+                  <b><?php echo $data['name']; ?></b> - <?php echo $data['comment']; ?> - <?php echo $com->dateFormat($data['comment_time']); ?>
+              </li>
+              <?php } ?>
+          <?php }?>
+      </ul>
+  </div>
+
+  <br><br>
+
+  
+</body>
+</html>
+
+  
+  <!-- End comment -->
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -560,6 +674,7 @@
     </div>
   </div>
   <!-- End Footer -->
+
   <!-- aos script -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <!-- custom script -->
@@ -567,3 +682,8 @@
 </body>
 
 </html>
+
+
+
+
+

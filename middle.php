@@ -76,7 +76,7 @@
                             }
                         ?>
                         
-                        <a class="btn primary-btn" href="./logout.php">Logout</a>
+                        <a class="btn primary-btn" href="./home.php">Logout</a>
                         
                     </div>
                     

@@ -1,3 +1,14 @@
+<?php 
+
+    session_start();
+    require_once 'config/db.php';
+    if (!isset($_SESSION['user_login'])) {
+        $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
+        header('location: signin.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +17,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="./images/anya.png" type="image/x-icon">
-  <title>ภาคเหนือ</title>
+  <title>ภาคใต้</title>
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./globalStyles.css">
   <link rel="stylesheet" href="./components.css">
@@ -22,8 +33,8 @@
   <div class="nav">
     <div class="container">
       <div class="nav__wrapper">
-        <a href="./home.php" class="logo">
-          <img src="./images/logo4.png" alt="shaif's cuisine">
+        <a href="./index.html" class="logo">
+          <img src="./images/logo.svg" alt="shaif's cuisine">
         </a>
         <nav>
           <div class="nav__icon">
@@ -47,14 +58,29 @@
             </div>
             <div class="nav__list__wrapper">
 
-              <li><a class="nav__link" href="./home.php">Home</a></li>
-              <li><a class="nav__link" href="./ภาคเหนือ.html">ภาคเหนือ</a></li>
-              <li><a class="nav__link" href="./ภาคอีสาน.html">ภาคอีสาน</a></li>
-              <li><a class="nav__link" href="./ภาคกลาง.html">ภาคกลาง</a></li>
-              <li><a class="nav__link" href="./ภาคใต้.html">ภาคใต้</a></li>
-              <li><a class="nav__link" href="./เกี่ยวกับ.html">เกี่ยวกับ</a></li>
-              <li><a class="nav__link" href="./contact.html">Contact</a></li>
-              <li><a href="./signin.php" class="btn primary-btn">Login</a></li>
+            <li><a class="nav__link" href="./user.php">Home</a></li>
+              <li><a class="nav__link" href="./north1.php">ภาคเหนือ</a></li>
+              <li><a class="nav__link" href="./northeast1.php">ภาคอีสาน</a></li>
+              <li><a class="nav__link" href="./middle1.php">ภาคกลาง</a></li>
+              <li><a class="nav__link" href="./south1.php">ภาคใต้</a></li>
+              <li><a class="nav__link" href="./about1.php">เกี่ยวกับ</a></li>
+              <li><a class="nav__link" href="./contact1.php">Contact</a></li>
+                <li><div class="btn primary-btn">
+                        <?php 
+
+                            if (isset($_SESSION['user_login'])) {
+                                $user_id = $_SESSION['user_login'];
+                                $stmt = $conn->query("SELECT * FROM users WHERE id = $user_id");
+                                $stmt->execute();
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                            }
+                        ?>
+                        
+                        <a class="btn primary-btn" href="./home.php">Logout</a>
+                        
+                    </div>
+                    
+                </li>
             </div>
           </ol>
         </nav>
@@ -77,22 +103,21 @@
       <div class="ourSpecials__wrapper">
         <div class="ourSpecials__item">
           <div class="ourSpecials__item__img">
-            <img src="./images/แกงอ่อม.jpg" alt="food img">
+            <img src="./images/anya.png" alt="food img">
           </div>
           <div class="ourSpecials__item__info">
             <h3 class="ourSpecials__item__title">
-              แกงอ่อมเนื้อ
+              แกงเขียวหวาน
             </h3>
-            <div class="ourSpecials__food__item">แกงอ่อมเนื้อ นิยมใช้เนื้อวัวและเครื่องในวัว เป็นส่วนผสมหลัก บ้างใช้เนื้อควายและเครื่องในควายเป็นส่วนผสม บ้างใช้แต่เครื่องใน เรียกชื่อตามเนื้อที่นำมาแกง เช่น แกงอ่อมเครื่องในวัว 
-              แกงอ่อมเครื่องในหมู แกงอ่อมเครื่องในควาย
+            <h4 class="ourSpecials__item__price">รสชาติ</h4>
+            <h4 class="ourSpecials__item__price">วิธีการทำ</h4>
+            <h4 class="ourSpecials__item__price">อุปกรณ์</h4>
+            <div class="ourSpecials__food__item">1.กะทิ<br>
+                2.กะปิ
             </div>
-            <div class="button__wrapper">
-              <a href="./แกงอ่อม.html" class="btn primary-btn" target="_blank">More...</a>
-            </div>
-            
-            <!-- <div class="ourSpecials__item__stars">
+            <div class="ourSpecials__item__stars">
               <img src="./images/3star.png" alt="3 stars">
-            </div> -->
+            </div>
           </div>
         </div>
         <div class="ourSpecials__item">

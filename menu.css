@@ -64,11 +64,25 @@
 	margin-bottom: 1rem;
 }
 
+.ourSpecials__item__priceseen {
+	font-size: 1.8rem;
+	color: var(--green-1);
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
 .ourSpecials__food__item {
 	font-size: 1.4rem;
 	color: var(--black-1);
 	font-weight: 600;
 	margin-bottom: 1rem;
+}
+
+.ourSpecials__food__itemseen {
+	font-size: 1.4rem;
+	color: var(--black-1);
+	font-weight: 600;
+	margin-bottom: 2rem;
 }
 
 .ourSpecials__item__stars {

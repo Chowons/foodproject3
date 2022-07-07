@@ -2,7 +2,7 @@
 
     session_start();
     require_once 'config/db.php';
-    if (!isset($_SESSION['admin_login'])) {
+    if (!isset($_SESSION['user_login'])) {
         $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
         header('location: signin.php');
     }
@@ -17,13 +17,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="./images/anya.png" type="image/x-icon">
-  <title>About | Shaif's Cuisine</title>
+  <title>Contact | Shaif's Cuisine</title>
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./globalStyles.css">
   <link rel="stylesheet" href="./components.css">
   <!-- aos library css  -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="./about.css">
+  <!-- Add your custom css -->
 </head>
 
 <body>
@@ -56,13 +56,13 @@
             </div>
             <div class="nav__list__wrapper">
 
-            <li><a class="nav__link" href="./admin.php">Home</a></li>
-              <li><a class="nav__link" href="./north.php">ภาคเหนือ</a></li>
-              <li><a class="nav__link" href="./northeast.php">ภาคอีสาน</a></li>
-              <li><a class="nav__link" href="./middle.php">ภาคกลาง</a></li>
-              <li><a class="nav__link" href="./south.php">ภาคใต้</a></li>
-              <li><a class="nav__link" href="./about.php">เกี่ยวกับ</a></li>
-              <li><a class="nav__link" href="./contact.php">Contact</a></li>
+            <li><a class="nav__link" href="./user.php">Home</a></li>
+              <li><a class="nav__link" href="./north1.php">ภาคเหนือ</a></li>
+              <li><a class="nav__link" href="./northeast1.php">ภาคอีสาน</a></li>
+              <li><a class="nav__link" href="./middle1.php">ภาคกลาง</a></li>
+              <li><a class="nav__link" href="./south1.php">ภาคใต้</a></li>
+              <li><a class="nav__link" href="./about1.php">เกี่ยวกับ</a></li>
+              <li><a class="nav__link" href="./contact1.php">Contact</a></li>
                 <li><div class="btn primary-btn">
                         <?php 
 
@@ -86,65 +86,81 @@
     </div>
   </div>
   <!-- End Nav Section -->
-  <!-- Our Story Section -->
-  <section id="ourStory" data-aos="fade-up">
+  <!-- Store Info Section -->
+  <section id="storeInfo" data-aos="fade-up">
     <div class="container">
-      <div class="ourStory__wrapper">
-
-        <div class="ourStory__img">
-          <img src="./images/ourStoryImg.png" alt="shaif's cuisine">
-        </div>
-        <div class="ourStory__info">
-          <h3 class="ourStory__title">
-            Our Story
+      <div class="storeInfo__wrapper">
+        <div class="storeInfo__item">
+          <div class="storeInfo__icon">
+            <img src="./images/wall-clock-icon.svg" alt="clock icon">
+          </div>
+          <h3 class="storeInfo__title">
+            10 AM - 7 PM
           </h3>
-          <p class="ourStory__subtitle">
-            It's all started since 1998
+          <p class="storeInfo__text">
+            Opening Hour
           </p>
-          <p class="ourStory__text">
-            Welcome to Shaif's Cuisine. We take pride in delivering warm, friendly service and creating mouth-watering
-            culinary delights for all. Using only the freshest locally sourced ingredients, we’ll ensure you have a
-            dining
-            experience to remember.
-            <br><br>
-            Since 1998, we are the perfect place for a romantic meal for two, a catch-up with friends, family parties,
-            business meetings, and bringing loved ones together. With comfortable surroundings, affordable prices, and
-            seating for up to 65 guests, we can cater for all occasions.
+        </div>
+        <div class="storeInfo__item">
+          <div class="storeInfo__icon">
+            <img src="./images/address-icon.svg" alt="clock icon">
+          </div>
+          <h3 class="storeInfo__title">
+            GEC, Chittagong
+          </h3>
+          <p class="storeInfo__text">
+            Address
+          </p>
+        </div>
+        <div class="storeInfo__item">
+          <div class="storeInfo__icon">
+            <img src="./images/phone-icon.svg" alt="clock icon">
+          </div>
+          <h3 class="storeInfo__title">
+            +880123443
+          </h3>
+          <p class="storeInfo__text">
+            Call Now
           </p>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Our Story Section -->
-  <!-- Our Goals -->
-  <section id="ourGoals" data-aos="fade-down">
+  <!-- End Store Info Section -->
+  <!-- Contact Form Section -->
+  <section id="form" data-aos="fade-down">
     <div class="container">
-      <div class="ourGoals__info">
-        <h3 class="ourGoals__title">
-          Our Goals
-        </h3>
-        <p class="ourGoals__text">
-          We shall sell delicious and remarkable food and beverages that meet the highest quality, freshness, and
-          seasonality criteria while combining modern-creative and classic cooking traditions. By showcasing warmth,
-          graciousness, efficiency, skill, professionalism, and integrity in our work, we will continually serve our
-          consumers with exceptional service. To have every customer who comes through our doors leave impressed by
-          their experience at Shaif's Cuisine and excited to come back again.
-        </p>
-      </div>
-      <div class="ourGoals__imgs__wrapper" data-aos="fade-up">
-        <div class="ourGoals__img1">
-          <img src="./images/ourGoals_img1.png" alt="kitchen img">
-        </div>
-        <div class="ourGoals__img2">
-          <img src="./images/ourGoals_img2.png" alt="kitchen img">
-        </div>
-        <div class="ourGoals__img3">
-          <img src="./images/ourGoals_img3.png" alt="kitchen img">
-        </div>
+      <h3 class="form__title">
+        Contact & Inquiry
+      </h3>
+      <div class="form__wrapper">
+        <form name="contact" method="POST" netlify>
+          <div class="form__group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="First Name" required>
+          </div>
+          <div class="form__group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="Last Name" required>
+          </div>
+          <div class="form__group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+          <div class="form__group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="Subject" required>
+          </div>
+          <div class="form__group form__group__full">
+            <label for="message">Message</label>
+            <textarea name="Message" id="message" cols="30" rows="10" required></textarea>
+          </div>
+          <button type="submit" class="btn primary-btn">Send</button>
+        </form>
       </div>
     </div>
   </section>
-  <!-- End Our Goals -->
+  <!-- End Contact Form Section-->
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -261,9 +277,10 @@
   </div>
   <!-- End Footer -->
 
-  <!-- aos scripts -->
+
+  <!-- aos script -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <!-- custom scripts -->
+  <!-- custom script -->
   <script src="./main.js"></script>
 </body>
 

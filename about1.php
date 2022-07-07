@@ -2,7 +2,7 @@
 
     session_start();
     require_once 'config/db.php';
-    if (!isset($_SESSION['admin_login'])) {
+    if (!isset($_SESSION['user_login'])) {
         $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
         header('location: signin.php');
     }
@@ -56,13 +56,13 @@
             </div>
             <div class="nav__list__wrapper">
 
-            <li><a class="nav__link" href="./admin.php">Home</a></li>
-              <li><a class="nav__link" href="./north.php">ภาคเหนือ</a></li>
-              <li><a class="nav__link" href="./northeast.php">ภาคอีสาน</a></li>
-              <li><a class="nav__link" href="./middle.php">ภาคกลาง</a></li>
-              <li><a class="nav__link" href="./south.php">ภาคใต้</a></li>
-              <li><a class="nav__link" href="./about.php">เกี่ยวกับ</a></li>
-              <li><a class="nav__link" href="./contact.php">Contact</a></li>
+            <li><a class="nav__link" href="./user.php">Home</a></li>
+              <li><a class="nav__link" href="./north1.php">ภาคเหนือ</a></li>
+              <li><a class="nav__link" href="./northeast1.php">ภาคอีสาน</a></li>
+              <li><a class="nav__link" href="./middle1.php">ภาคกลาง</a></li>
+              <li><a class="nav__link" href="./south1.php">ภาคใต้</a></li>
+              <li><a class="nav__link" href="./about1.php">เกี่ยวกับ</a></li>
+              <li><a class="nav__link" href="./contact1.php">Contact</a></li>
                 <li><div class="btn primary-btn">
                         <?php 
 

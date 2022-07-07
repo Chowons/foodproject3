@@ -64,7 +64,7 @@
               <li><a class="nav__link" href="./middle.php">ภาคกลาง</a></li>
               <li><a class="nav__link" href="./south.php">ภาคใต้</a></li>
               <li><a class="nav__link" href="./about.php">เกี่ยวกับ</a></li>
-              <li><a class="nav__link" href="./contact.php">Contact</a></li>
+              <li><a class="nav__link" href="./home.php">Contact</a></li>
                 <li><div class="btn primary-btn">
                         <?php 
 
@@ -76,7 +76,7 @@
                             }
                         ?>
                         
-                        <a class="btn primary-btn" href="./logout.php">Logout</a>
+                        <a class="btn primary-btn" href="./home.php">Logout</a>
                         
                     </div>
                     
