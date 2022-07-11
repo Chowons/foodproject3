@@ -545,6 +545,35 @@
 
   <br><br>
 
+
+  <center>
+    <?php 
+    
+        if(isset($_GET['msg'])) {
+            $msg = $_GET['msg'];
+            echo "<span style='color: green; font-size: 20px'>".$msg."</span>";
+        }
+
+    ?>
+
+    <form action="post_comment.php" method="post">
+        <table>
+            <tr>
+                <td>Your Name:</td>
+                <td><input type="text" name="name" placeholder="Please enter your name" style="width: 230px; height: 30px;"></td>
+            </tr>
+            <tr>
+                <td>Comment:</td>
+                <td>
+                    <textarea name="comment" cols="30" rows="10" placeholder="Please enter your comment"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" value="Post" style="width: 235px; height: 40px;"></td>
+            </tr>
+        </table>
+    </form>
+    </center>
   
 </body>
 </html>
